@@ -1,0 +1,107 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
+local HOn = nil
+
+local Contact = [[
+Commands:
+!Hell_(On/Off)
+!speed (Count)
+!jumppower (Count)
+!reset
+!Blackhole (Power)
+]]
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!cmds") then
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = Contact,
+	Image = "rbxassetid://4483345998",
+	Time = 20
+})
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    local parts = lowercaseMessage:split(" ")
+    if parts[1]:find("!speed") then
+        local count = tonumber(parts[2])
+        if count and count > 0 then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = count
+        end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    local parts = lowercaseMessage:split(" ")
+    if parts[1]:find("!jumppower") then
+        local count = tonumber(parts[2])
+        if count and count > 0 then
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = count
+        end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChattedA(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!hell_on") then
+        HOn = true
+        while HOn do task.wait()
+        local ohString1 = "Groundslash"
+game:GetService("ReplicatedStorage").Sukuna2.BeowulfRemote:FireServer(ohString1)
+local ohString1 = "HellOnEarth3"
+game:GetService("ReplicatedStorage").Sukuna2.BeowulfRemote:FireServer(ohString1)
+        end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChattedA)
+
+local function onPlayerChattedA(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!hell_off") then
+        HOn = false
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChattedA)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!reset") then
+        game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    local parts = lowercaseMessage:split(" ")
+    if parts[1]:find("!blackhole") then
+        local count = tonumber(parts[2])
+        if count and count > 0 then
+            for i = 1, count * 5 do 
+game:GetService("ReplicatedStorage").CompletelyNewChimeraShadowGardenAssets.DomainEvent:FireServer()
+            end
+        end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+print("The script is fully loaded/Скрипт полностью прогружен")
