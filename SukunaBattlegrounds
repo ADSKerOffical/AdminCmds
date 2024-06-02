@@ -8,6 +8,10 @@ Commands:
 !jumppower (Count)
 !reset
 !Blackhole (Power)
+!Arrow
+!Buff_(On/Off)
+!UltraPurple
+!Laugh
 ]]
 
 local function onPlayerChatted(message, player)
@@ -104,4 +108,75 @@ game:GetService("ReplicatedStorage").CompletelyNewChimeraShadowGardenAssets.Doma
 end
 
 game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local AOon = nil
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!buff_on") then
+        game:GetService("ReplicatedStorage").CompletelyNewHakariAssets.Remotes.IdleDeathGamble:FireServer()
+wait()
+game:GetService("ReplicatedStorage")["Yuji/SukunaReworkAssets"].Remotes.KingofCurses:FireServer()
+wait(10)
+AOon = true
+
+local function AbilityOne()
+  while AOon do task.wait()
+game:GetService("Players").LocalPlayer.Backpack.Dismantle.LocalScript.Event:FireServer()
+  end
+end
+
+AbilityOne()
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!buff_off") then
+        AOon = false
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!ultrapurple") then
+        for i = 1, 20 do
+local ohString1 = "FinalHollowPurple"
+game:GetService("ReplicatedStorage")["Final Hollow Purple Assets"].Events.Abilitys.Gojo:FireServer(ohString1)
+end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!laugh") then
+        local ohString1 = "Laughing"
+game:GetService("ReplicatedStorage").Sukuna2.BeowulfRemote:FireServer(ohString1)
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!arrow") then
+        for i = 1, 10 do
+wait()
+game:GetService("ReplicatedStorage").FlameArrowAssets.Assets.Remtoes.Fire:FireServer()
+end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
 print("The script is fully loaded/Скрипт полностью прогружен")
