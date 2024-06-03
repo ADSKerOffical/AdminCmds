@@ -694,6 +694,50 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 end
 
+local function ToolFour()
+local tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Projectile"
+
+tool.Activated:Connect(function()
+ for i = 1, 25 do
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local targetPosition = mouse.Hit.Position
+local ohCFrame1 = CFrame.new(targetPosition)
+local ohVector32 = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z)
+
+game:GetService("ReplicatedStorage").CompletelyNewHakariAssets.Remotes.PachinkoBall:FireServer(ohCFrame1, ohVector32)
+ end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+
+local function ToolFive()
+local tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Container Cataclysm"
+
+local isEnabled = false
+
+local function onActivated()
+    isEnabled = not isEnabled
+
+    if not isEnabled then return end
+while isEnabled and wait(0.2) do
+game:GetService("ReplicatedStorage").CompletelyNewHakariAssets.Remotes.ContainerKick:FireServer()
+  end
+end
+
+tool.Activated:Connect(onActivated)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+
+ToolFour()
+ToolFive()
 ToolOne()
 ToolTwo()
 ToolThree()
