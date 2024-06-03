@@ -3,15 +3,16 @@ local HOn = nil
 
 local Contact = [[
 Commands:
-!Hell_(On/Off)
-!speed (Count)
-!jumppower (Count)
+!Hell_(On/Off)       !punchaura_(On/Off)
+!speed(Count)        !shelling1_(On/Off)
+!jumppower(Count)    !shelling2_(On/Off)
 !reset
 !Blackhole (Power)
 !Arrow
 !Buff_(On/Off)
 !UltraPurple
 !Laugh
+!Mahoraga
 ]]
 
 local function onPlayerChatted(message, player)
@@ -174,6 +175,127 @@ local function onPlayerChatted(message, player)
 wait()
 game:GetService("ReplicatedStorage").FlameArrowAssets.Assets.Remtoes.Fire:FireServer()
 end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!mahoraga") then
+    local ohString1 = "Character"
+local ohString2 = "Megumi"
+local ohString3 = "Select"
+
+game:GetService("ReplicatedStorage").Attribute:FireServer(ohString1, ohString2, ohString3)
+  wait(6)
+      local players = game:GetService("Players"):GetPlayers()
+for _, player in ipairs(players) do
+    if player.Character and player.Character ~= game.Players.LocalPlayer.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+local ohVector31 = player.Character.HumanoidRootPart.Position
+game:GetService("Players").LocalPlayer.Backpack.COOLDOWN.Use.RemoteEvent:FireServer(ohVector31)
+  end
+end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local PAon = nil
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!punchaura_on") then
+    PAon = true
+        local player = game:GetService("Players").LocalPlayer
+while PAon do wait(0.5)
+    local parts = workspace:GetPartBoundsInRadius(player.Character:WaitForChild("HumanoidRootPart").Position, 7)
+    local foundEntity = false
+    for _, part in ipairs(parts) do
+        if (part:IsA("BasePart") or part:IsA("UnionOperation") or part:IsA("Model")) and not part.Anchored and part:IsDescendantOf(workspace) and not part:IsDescendantOf(player.Character) then
+            foundEntity = true
+            break
+        end
+    end
+    if foundEntity then
+      for i = 1, 5 do
+        game:GetService("ReplicatedStorage").NewTojiReworkAssets.Remotes.Punches:FireServer()
+      end
+    else
+        
+    end
+end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!punchaura_off") then
+        PAon = false
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local SGAon = nil
+local SGBon = nil
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!shelling1_on") then
+SGAon = true
+local spinSpeed = 20
+local Spin = Instance.new("BodyAngularVelocity")
+Spin.Name = "Spinning"
+Spin.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+Spin.MaxTorque = Vector3.new(0, math.huge, 0)
+Spin.AngularVelocity = Vector3.new(0,spinSpeed,0)
+        while SGAon do wait(0.1)
+game:GetService("Players").LocalPlayer.Backpack["Maximum Reversal Red (Use Twice)"]["Maximum Reversal Red"].Event:FireServer()
+end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!shelling2_on") then
+SGBon = true
+        while SGBon do wait(0.1)
+game:GetService("Players").LocalPlayer.Backpack["Maximum Reversal Red (Use Twice)"]["Maximum Reversal Red"].Event:FireServer()
+end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!shelling1_off") then
+        SGAon = false
+        speaker = game.Players.LocalPlayer
+for i,v in pairs(speaker.Character:GetDescendants()) do
+  if v:IsA("BodyVelocity") or v:IsA("BodyGyro") or v:IsA("RocketPropulsion") or v:IsA("BodyThrust") or v:IsA("BodyAngularVelocity") or v:IsA("AngularVelocity") or v:IsA("BodyForce") or v:IsA("VectorForce") or v:IsA("LineForce") then
+   v:Destroy()
+  end
+ end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!shelling2_off") then
+        SGBon = false
     end
 end
 
