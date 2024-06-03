@@ -6,13 +6,14 @@ Commands:
 !Hell_(On/Off)       !punchaura_(On/Off)
 !speed(Count)        !shelling1_(On/Off)
 !jumppower(Count)    !shelling2_(On/Off)
-!reset
-!Blackhole (Power)
+!reset         !meteors_(On/Off)
+!Blackhole (Power)     !meteorrain_(On/Off)
 !Arrow
 !Buff_(On/Off)
 !UltraPurple
 !Laugh
 !Mahoraga
+!regen_(On/Off)
 ]]
 
 local function onPlayerChatted(message, player)
@@ -296,6 +297,105 @@ local function onPlayerChatted(message, player)
     
     if lowercaseMessage:find("!shelling2_off") then
         SGBon = false
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local RGon = nil
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!regen_on") then
+   RGon = true
+        while RGon do wait(0.1)
+        if game:GetService("Players").LocalPlayer.Character.Humanoid.Health <= 120 then
+      game:GetService("ReplicatedStorage")["Yuji/SukunaReworkAssets"].Remotes.KingofCurses:FireServer()
+      end
+        end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!regen_off") then
+        RGon = false
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local MSon = nil
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!meteors_on") then
+       MSon = true
+        while MSon do
+    wait(0.6)
+    local player = game.Players.LocalPlayer
+    local mouse = player:GetMouse()
+
+    local targetPosition = mouse.Hit.Position
+    local args = {
+        [1] = CFrame.new(targetPosition),
+        [2] = math.huge
+    }
+
+    local character = player.Character or player.CharacterAdded:Wait()
+    local supernova = character:FindFirstChild("Supernova")
+    if supernova then
+        local swordRain = supernova:FindFirstChild("Sword Rain")
+        if swordRain then
+            swordRain.RemoteEvent:FireServer(unpack(args))
+        end
+    end
+end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!meteors_off") then
+        MSon = false
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local MRon = nil
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!meteorrain_on") then
+       MRon = true
+        while MRon do wait(4)
+        local players = game:GetService("Players"):GetPlayers()
+for _, player in ipairs(players) do
+    if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+local ohCFrame1 = player.Character.HumanoidRootPart.CFrame
+local ohNumber2 = math.huge
+
+game:GetService("Players").LocalPlayer.Backpack.Supernova["Sword Rain"].RemoteEvent:FireServer(ohCFrame1, ohNumber2)
+  end
+end
+        end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!meteorrain_off") then
+        MRon = false
     end
 end
 
