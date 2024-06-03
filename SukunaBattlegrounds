@@ -13,7 +13,7 @@ Commands:
 !UltraPurple        !sneez_(On/Off)
 !Laugh          !kj
 !Mahoraga         !quasar(Power)
-!regen_(On/Off)      
+!regen_(On/Off)      !Tools_Pack
 !regenmax
 ]]
 
@@ -633,6 +633,70 @@ for i = 1, count * 10 do
 game:GetService("ReplicatedStorage").CompletelyNewChimeraShadowGardenAssets.DomainEvent:FireServer()
 end
         end
+    end
+end
+
+game.Players.LocalPlayer.Chatted:Connect(onPlayerChatted)
+
+local function onPlayerChatted(message, player)
+    local lowercaseMessage = message:lower()
+    
+    if lowercaseMessage:find("!tools_pack") then
+        local function ToolOne()
+local tool = Instance.new("Tool")
+tool.Name = "Summon Black Hole"
+tool.RequiresHandle = false
+
+tool.Activated:Connect(function()
+local player = game.Players.LocalPlayer
+        local mouse = player:GetMouse()
+        local targetPosition = mouse.Hit.Position
+        local args = {
+            [1] = "BlackHole",
+            [2] = "Fire",
+            [3] = {
+                ["mousepos"] = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z),
+                ["rootcf"] = CFrame.new(targetPosition)
+            }
+        }
+        local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild("Yuki's Black Hole Assets"):WaitForChild("SendServer")
+        remoteEvent:InvokeServer(unpack(args))
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+
+local function ToolTwo()
+local tool = Instance.new("Tool")
+tool.Name = "Needless"
+tool.RequiresHandle = false
+
+tool.Activated:Connect(function()
+for i = 1, 20 do
+game:GetService("ReplicatedStorage").Remotes7.Characters.Sukuna.Cleave.CleaveEvent:FireServer()
+end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+
+local function ToolThree()
+local tool = Instance.new("Tool")
+tool.Name = "Hell's Voices"
+tool.RequiresHandle = false
+
+tool.Activated:Connect(function()
+for i = 1, 35 do
+game:GetService("ReplicatedStorage").RemotesForFlyBackFinisherSkills["Cursed Speech"]:FireServer()
+end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+
+ToolOne()
+ToolTwo()
+ToolThree()
     end
 end
 
