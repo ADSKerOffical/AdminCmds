@@ -579,11 +579,26 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 end
 
+local function toolSix()
+local tool = Instance.new("Tool")
+tool.Name = "Green Explode"
+tool.RequiresHandle = false
+
+tool.Activated:Connect(function()
+for i = 1, 15 do
+game:GetService("ReplicatedStorage").CharacterEvents["The King Of Curses"].BaseMoveset.Move2:FireServer()
+end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+
 toolOne()
 toolTwo()
 toolThree()
 toolFour()
 toolFive()
+toolSix()
     end
 end
 
