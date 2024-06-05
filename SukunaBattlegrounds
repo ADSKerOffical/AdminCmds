@@ -751,11 +751,44 @@ tool.Activated:Connect(onActivated)
 tool.Parent = game.Players.LocalPlayer.Backpack
 end
 
+local function ToolSix()
+local tool = Instance.new("Tool")
+tool.Name = "Green Explode"
+tool.RequiresHandle = false
+
+tool.Activated:Connect(function()
+for i = 1, 15 do
+game:GetService("ReplicatedStorage").CharacterEvents["The King Of Curses"].BaseMoveset.Move2:FireServer()
+end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+
+local function ToolSeven()
+local tool = Instance.new("Tool")
+tool.Name = "Jumping Field"
+tool.RequiresHandle = false
+
+tool.Activated:Connect(function()
+for i = 1, 100 do
+task.wait()
+local ohString1 = "Groundslash"
+
+game:GetService("ReplicatedStorage").Sukuna2.BeowulfRemote:FireServer(ohString1)
+end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+
 ToolFour()
 ToolFive()
 ToolOne()
 ToolTwo()
 ToolThree()
+ToolSix()
+ToolSeven()
     end
 end
 
